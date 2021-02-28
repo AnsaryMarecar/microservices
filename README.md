@@ -12,6 +12,9 @@ Concernant le developpement, il a principalement été réalisé en Java SPring 
 Le powerpoint du projet avec un descriptif complet est disponible sur le lien suivant (accessible uniquement pour l'enseignant) :
 https://docs.google.com/presentation/d/1dtHue-hyfMCjdjifYWxZiljplaH_i2NbMUrkZ17cH2U/edit?usp=sharing
 
+Il est également disponible en PDF dans le dossier du projet.
 
+## Contact 
+Pour tout contact sur le projet, veuillez contacter Ansary MARECAR ansary.marecar'@'edu.esiee.fr
 
  
