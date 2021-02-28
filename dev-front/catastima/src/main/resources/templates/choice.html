@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	    <title>Catastima</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
+</head>
+	<body>
+ <br />
+  <br />
+ .	
+ <br />
+ <br /> 
+<div class="container" style="padding-bottom: 6px;background-image: url('https://cdn.pixabay.com/photo/2015/07/05/11/56/store-832188_960_720.jpg');" >
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: #036f7b !important">
+  <div class="container-fluid">
+     <a class="navbar-brand" style="background-color:#c72c48; color:white; padding: 2px;" href="#">Catastima</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText" style="color: white !important">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a th:href="@{/authentification/newconnect}" class="nav-link active" aria-current="page"  >Intranet</a> 
+        </li>
+       </ul>
+     </div>
+   </div>
+ </nav>	
+ .	
+ <br />
+ <br />
+	<div class="row row-cols-1 row-cols-md-3 g-4" >
+	  <div class="col" th:each="seller : ${sellers}">
+	    <div class="card h-100" style="background-color:rgba(220,220,220,0.8);">
+	      <div class="card-body">
+	        <h5 class="card-title" style="color: #036f7b">
+	        <b th:text="${seller.seller_name}">Seller name</b>
+	        </h5>
+	        <p class="card-text">
+	         <a th:href="@{|/home/*{seller.seller_id}|}" class="btn btn-danger" style="background-color: #c72c48">Open seller</a>  
+	         </p>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div>
+
+<!-- Flexbox container for aligning the toasts -->
+<div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center w-100">
+
+  <!-- Then put toasts within -->
+  <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="..." class="rounded me-2" alt="...">
+      <strong class="me-auto">Cookies, Miam Miam</strong>
+      <small>Ansary M., CEO of Catastima</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+		Hey sista, Hey bro ! We use some beautifull cookies for your good experiences
+		<br /> Naah, we are not GAFAM to sell it or use it to ubuse you. 
+		<br /> But if you dosn't want it, you can refuse it by desactiving it, like is proposed there : <a href="https://www.wikihow.com/Disable-Cookies"> How to disable cookies</a>
+    </div>
+  </div>
+</div>
+
+<script>
+toast.show()
+var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+var toastList = toastElList.map(function (toastEl) {
+  return new bootstrap.Toast(toastEl, option)
+})
+
+</script>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+    -->
+	</body>
+</html>
+

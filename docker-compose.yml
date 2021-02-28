@@ -1,0 +1,215 @@
+version: '3.9'
+services:
+  db_product:
+    container_name: db_product
+    hostname: db_product
+    restart: always
+    build:
+      context: .
+      dockerfile: ./db_product/Dockerfile
+    environment:
+      - MYSQL_DATABASE=db_product
+    ports:
+      - "4001:3306"
+    networks:
+      - netwbackProduct
+      
+  db_category:
+    container_name: db_category
+    hostname: db_category
+    restart: always
+    build:
+      context: .
+      dockerfile: ./db_category/Dockerfile
+    environment:
+      - MYSQL_DATABASE=db_category
+    ports:
+      - "4002:3306"
+    networks:
+      - netwbackCategory
+      
+  db_seller:
+    container_name: db_seller
+    hostname: db_seller
+    restart: always
+    build:
+      context: .
+      dockerfile: ./db_seller/Dockerfile
+    environment:
+      - MYSQL_DATABASE=db_seller
+    ports:
+      - "4003:3306"
+    networks:
+      - netwbackSeller
+      
+  db_user:
+    container_name: db_user
+    hostname: db_user
+    restart: always
+    build:
+      context: .
+      dockerfile: ./db_user/Dockerfile
+    environment:
+      - MYSQL_DATABASE=db_user
+    ports:
+      - "4004:3306"
+    networks:
+      - netwbackUser
+      
+  db_authentification:
+    container_name: db_authentification
+    hostname: db_authentification
+    restart: always
+    build:
+      context: .
+      dockerfile: ./db_authentification/Dockerfile
+    environment:
+      - MYSQL_DATABASE=db_authentification
+    ports:
+      - "4005:3306"
+    networks:
+      - netwbackAuthentification
+      
+  db_session:
+    container_name: db_session
+    hostname: db_session
+    restart: always
+    build:
+      context: .
+      dockerfile: ./db_session/Dockerfile
+    environment:
+      - MYSQL_DATABASE=db_session
+    ports:
+      - "4006:3306"
+    networks:
+      - netwfrontSession
+      
+  back_product:
+    image: catastima/b_product
+    container_name: product
+    hostname: product
+    ports:
+      - "9001:9001"
+    depends_on:
+      - db_product
+    build:
+      context: .
+      dockerfile: ./dev-product/Dockerfile
+    networks:
+      - netwbackProduct
+      - netwfrontProduct
+    restart: always
+    
+  back_category:
+    depends_on:
+      - db_category
+    networks:
+      - netwbackCategory
+      - netwfrontCategory
+    build:
+      context: .
+      dockerfile: ./dev-category/Dockerfile
+    image: catastima/b_category
+    container_name: category
+    hostname: category
+    ports:
+      - "9002:9002"
+    restart: always
+  
+  back_seller:
+    depends_on:
+      - db_seller
+    networks:
+      - netwbackSeller
+      - netwfrontSeller
+    build:
+      context: .
+      dockerfile: ./dev-seller/Dockerfile
+    image: catastima/b_seller
+    container_name: seller
+    hostname: seller
+    ports:
+      - "9003:9003"
+    restart: always
+  
+  back_user:
+    depends_on:
+      - db_user
+    networks:
+      - netwbackUser
+      - netwfrontUser
+    build:
+      context: .
+      dockerfile: ./dev-user/Dockerfile
+    image: catastima/b_user
+    container_name: user
+    hostname: user
+    ports:
+      - "9004:9004"
+    restart: always
+    
+  back_authentification:
+    depends_on:
+      - db_authentification
+    networks:
+      - netwbackAuthentification
+      - netwfrontAuthentification
+    build:
+      context: .
+      dockerfile: ./dev-authentification/Dockerfile
+    image: catastima/b_authentification
+    container_name: authentification
+    hostname: authentification
+    ports:
+      - "9005:9005"
+    restart: always
+    
+  front-catastima:
+    depends_on:
+      - back_authentification
+      - back_user
+      - back_category
+      - back_product
+      - db_session
+    networks:
+      - netwfrontSeller
+      - netwfrontCategory
+      - netwfrontUser
+      - netwfrontProduct
+      - netwfrontAuthentification
+      - netwfrontSession 
+    build:
+      context: .
+      dockerfile: ./dev-front/Dockerfile
+    image: catastima/b_front
+    container_name: front
+    hostname: front
+    ports:
+      - "9009:9009"
+    restart: always
+
+networks:
+  netwbackProduct:
+    driver: bridge
+  netwbackAuthentification:
+    driver: bridge
+  netwbackCategory:
+    driver: bridge
+  netwbackSeller:
+    driver: bridge
+  netwbackUser:
+    driver: bridge
+    
+  netwfrontSeller:
+    driver: bridge
+  netwfrontCategory:
+    driver: bridge
+  netwfrontUser:
+    driver: bridge
+  netwfrontProduct:
+    driver: bridge
+  netwfrontAuthentification:
+    driver: bridge
+    
+  netwfrontSession:
+    driver: bridge
