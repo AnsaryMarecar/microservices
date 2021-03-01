@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.catastima.home.bean.Category;
-@FeignClient(name = "microservice-categories", url = "localhost:9002")
+@FeignClient(name = "microservice-categories", url = "category:9002")
 public interface ProxyCategory {
 	@GetMapping(value = "/map/categories")
 	List<Category> listAll();

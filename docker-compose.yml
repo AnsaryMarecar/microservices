@@ -185,7 +185,7 @@ services:
     container_name: front
     hostname: front
     ports:
-      - "9009:9009"
+      - "9021:9021"
     restart: always
 
 networks:
@@ -199,7 +199,6 @@ networks:
     driver: bridge
   netwbackUser:
     driver: bridge
-    
   netwfrontSeller:
     driver: bridge
   netwfrontCategory:
@@ -210,6 +209,5 @@ networks:
     driver: bridge
   netwfrontAuthentification:
     driver: bridge
-    
   netwfrontSession:
     driver: bridge

@@ -18,7 +18,7 @@ import java.util.List;
  *
  */
 
-@FeignClient(name = "microservice-products", url = "localhost:9001")
+@FeignClient(name = "microservice-products", url = "product:9001")
 public interface MicroServiceProxyProduct {
 	@GetMapping(value = "/map/products")
 	List<ProductBean> listProducts();

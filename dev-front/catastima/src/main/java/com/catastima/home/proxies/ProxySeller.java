@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.catastima.home.bean.Seller;
 
-@FeignClient(name = "microservice-sellers", url = "localhost:9003")
+@FeignClient(name = "microservice-sellers", url = "seller:9003")
 public interface ProxySeller {
 	@GetMapping(value = "/map/sellers")
 	List<Seller> listAll();

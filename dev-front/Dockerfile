@@ -14,6 +14,6 @@ FROM openjdk:latest
 COPY --from=MAVEN_BUILD /target/catastima-0.0.1-SNAPSHOT.jar /catastima.jar
 
 # expose
-EXPOSE 9009
+EXPOSE 9021
 # set the startup command to execute the jar
 CMD ["java", "-jar", "/catastima.jar"]

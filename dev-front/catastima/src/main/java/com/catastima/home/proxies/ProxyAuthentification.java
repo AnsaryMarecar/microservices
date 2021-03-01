@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.catastima.home.bean.Authentification;
 import com.catastima.home.bean.User;
 
-@FeignClient(name = "microservice-authentifications", url = "localhost:9005")
+@FeignClient(name = "microservice-authentifications", url = "authentification:9005")
 public interface ProxyAuthentification {
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/map/authentifications/add", consumes = "application/json")

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.catastima.home.bean.User;
 
-@FeignClient(name = "microservice-users", url = "localhost:9004")
+@FeignClient(name = "microservice-users", url = "user:9004")
 public interface ProxyUser {
 	@PostMapping(value = "/map/users")
 	List<User> listAll(); 
